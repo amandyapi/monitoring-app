@@ -1,0 +1,34 @@
+<div class="card-body">
+    <h4 class="card-title"><span class="lstick"></span>Suivi des services</h4>
+</div>
+<div class="row">
+    <!-- chart component -->
+    <div class="col-lg-12 col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title"><span class="lstick"></span>Liste des services</h4>
+                <div class="table-responsive">
+                    <table class="table vm no-th-brd pro-of-month mb-0 no-wrap">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Libellé</th>
+                                <th>statut</th>
+                                <th>Changer le statut</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let service of servicesList">
+                                <td>{{service.id}}</td>
+                                <td>{{service.name}}</td>
+                                <td><span class="label label-success label-rounded">Actif</span></td>
+                                <td> <button disabled class="btn btn-light">Modifier</button></td>
+                            </tr>   
+                            
+                        </tbody> 
+                    </table>
+                </div>
+            </div>
+        </div>   
+    </div>
+</div>

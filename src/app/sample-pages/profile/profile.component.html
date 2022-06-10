@@ -1,0 +1,82 @@
+<div class="card-body">
+    <h4 class="card-title"><span class="lstick"></span>Suivi des guichets</h4>
+</div>
+<div class="row">
+    <div class="col-lg-4 col-md-6">
+        <div class="card bg-orange">
+            <div class="card-body">
+                <div class="d-flex no-block">
+                    <div class="m-r-20 align-self-center"><img src="assets/images/icon/kiosk.png" alt="Income" /></div>
+                    <div class="align-self-center">
+                        <h6 class="text-white m-t-10 m-b-0">Nombre total de guichet</h6>
+                        <h2 class="m-t-0 text-white">{{kioskTotal}}</h2></div>
+                </div> 
+            </div>
+        </div> 
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="card bg-cyan">
+            <div class="card-body">
+                <div class="d-flex no-block">
+                    <div class="m-r-20 align-self-center"><img src="assets/images/icon/connected.png" alt="Income" /></div>
+                    <div class="align-self-center">
+                        <h6 class="text-white m-t-10 m-b-0">Connecté</h6>
+                        <h2 class="m-t-0 text-white">{{onlineKiosk}}</h2></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+      <div class="card bg-secondary">
+          <div class="card-body">
+              <div class="d-flex no-block">
+                  <div class="m-r-20 align-self-center"><img src="assets/images/icon/disconnected.png" alt="Income" /></div>
+                  <div class="align-self-center">
+                      <h6 class="text-white m-t-10 m-b-0">Déconnecté</h6>
+                      <h2 class="m-t-0 text-white">{{offlineKiosk}}</h2></div>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  
+  </div>
+<div class="row">
+    <!-- chart component -->
+    <div class="col-lg-12 col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title"><span class="lstick"></span>Liste des guichets</h4>
+                <div class="table-responsive">
+                    <table class="table vm no-th-brd pro-of-month mb-0 no-wrap">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Libellé</th>
+                                <th>Addresse</th>
+                                <th>statut</th>
+                                <th>Dernière activité</th>
+                                <th>Dernière transaction</th>
+                                <th>Détails</th> 
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let kiosk of kioskList" >
+                                <td>{{kiosk.id}}</td>
+                                <td>{{kiosk.name}}</td>
+                                <td>{{kiosk.address}}</td>
+                                <td *ngIf="kiosk.pointsMonitorings[0].online == true"><span class="label label-success label-rounded">Ligne</span></td>
+                                <td *ngIf="kiosk.pointsMonitorings[0].online == false"><span class="label label-danger label-rounded">Hors ligne</span></td>
+ 
+                                <td>{{kiosk.pointsMonitorings[0].lastActive}}</td>
+                                <td>{{kiosk.pointsMonitorings[0].paymentDate}}</td>
+                                <td><button class="btn btn-info">Afficher</button></td>
+                            </tr>
+                                                       
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>   
+    </div>
+</div>

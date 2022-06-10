@@ -1,0 +1,137 @@
+<div class="card-body">
+    <h4 class="card-title"><span class="lstick"></span>Reporting</h4>
+    <h6 class="card-subtitle">{{dateNow | date:'dd-MMMM-yyyy'}}</h6> 
+</div>
+<div class="row">
+  <div class="col-lg-4 col-md-6">
+      <div class="card bg-orange">
+          <div class="card-body">
+              <div class="d-flex no-block">
+                  <div class="m-r-20 align-self-center"><img src="assets/images/icon/kiosk.png" alt="Income" /></div>
+                  <div class="align-self-center">
+                      <h6 class="text-white m-t-10 m-b-0">Nombre total de guichet</h6>
+                      <h2 class="m-t-0 text-white">{{kioskTotal}}</h2></div>
+              </div> 
+          </div>
+      </div> 
+  </div>
+  <div class="col-lg-4 col-md-6">
+      <div class="card bg-cyan">
+          <div class="card-body">
+              <div class="d-flex no-block">
+                  <div class="m-r-20 align-self-center"><img src="assets/images/icon/connected.png" alt="Income" /></div>
+                  <div class="align-self-center">
+                      <h6 class="text-white m-t-10 m-b-0">Connecté</h6>
+                      <h2 class="m-t-0 text-white">{{onlineKiosk}}</h2></div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="col-lg-4 col-md-6">
+    <div class="card bg-secondary">
+        <div class="card-body">
+            <div class="d-flex no-block">
+                <div class="m-r-20 align-self-center"><img src="assets/images/icon/disconnected.png" alt="Income" /></div>
+                <div class="align-self-center">
+                    <h6 class="text-white m-t-10 m-b-0">Déconnecté</h6>
+                    <h2 class="m-t-0 text-white">{{offlineKiosk}}</h2></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+<div class="row">
+    <!-- chart component -->
+    <div class="col-lg-9 col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title"><span class="lstick"></span>Transactions récentes</h4>
+                <div class="table-responsive">
+                    <table class="table vm no-th-brd pro-of-month mb-0 no-wrap">
+                        <thead>
+                            <tr>
+                                <th>Réf.</th>
+                                <th>Code client</th>
+                                <th>Montant</th>
+                                <th>Service</th>
+                                <th>Date</th>
+                                <th>Lieu</th>
+                                <th>Statut</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let transaction of latestTransactions">
+                                <td>{{transaction.operationRef}}</td>
+                                <td>{{transaction.clientCode}}</td>
+                                <td>{{transaction.amount}}</td>
+                                <td>{{transaction.service.name}}</td>
+                                <td>{{transaction.created}}</td>
+                                <td>{{transaction.kiosk.name}}</td>
+                                <td *ngIf="transaction.status==0"><span class="label label-success label-rounded">Succès</span></td>
+                                <td *ngIf="transaction.status==1"><span class="label label-danger label-rounded">Echec</span></td>
+                                <td *ngIf="transaction.status==2"><span class="label label-danger label-rounded">Suspendu</span></td>
+
+                            </tr>
+                           
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>    </div>
+    <!-- other chart component -->
+    <div class="col-lg-3 col-md-12">
+        <div class="col-lg-12 col-md-12">
+            <div class="card bg-info">
+                <div class="card-body">
+                    <div class="d-flex no-block">
+                        <div class="m-r-20 align-self-center"><img src="assets/images/icon/list.png" alt="Income" /></div>
+                        <div class="align-self-center">
+                            <h6 class="text-white m-t-10 m-b-0">Nombre total de transaction</h6>
+                            <h2 class="m-t-0 text-white">{{transactionsTotal}}</h2></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12">
+            <div class="card bg-success">
+                <div class="card-body">
+                    <div class="d-flex no-block">
+                        <div class="m-r-20 align-self-center"><img src="assets/images/icon/success.png" alt="Income" /></div>
+                        <div class="align-self-center">
+                            <h6 class="text-white m-t-10 m-b-0">Transaction Succès</h6>
+                            <h2 class="m-t-0 text-white">{{transactionsSuccess}}</h2></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12">
+          <div class="card bg-danger">
+              <div class="card-body">
+                  <div class="d-flex no-block">
+                      <div class="m-r-20 align-self-center"><img src="assets/images/icon/failed.png" alt="Income" /></div>
+                      <div class="align-self-center">
+                          <h6 class="text-white m-t-10 m-b-0">Transaction échouées</h6>
+                          <h2 class="m-t-0 text-white">{{transactionsFailed}}</h2></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+        <div class="col-lg-12 col-md-12">
+            <div class="card bg-primary">
+                <div class="card-body">
+                    <div class="d-flex no-block">
+                        <div class="m-r-20 align-self-center"><img src="assets/images/icon/pending.png" alt="Income" /></div>
+                        <div class="align-self-center">
+                            <h6 class="text-white m-t-10 m-b-0">Transaction suspendues</h6>
+                            <h2 class="m-t-0 text-white">{{transactionsHold}}</h2></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+          </div>
+</div>
+
+
+

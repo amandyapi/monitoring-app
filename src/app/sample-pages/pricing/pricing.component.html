@@ -1,0 +1,153 @@
+<div class="card-body">
+    <h4 class="card-title"><span class="lstick"></span>Filtre de transactions</h4>
+</div>
+<div class="row">   
+        <div class="col-lg-3 col-md-6">
+            <div class="card bg-info">
+                <div class="card-body">
+                    <div class="d-flex no-block">
+                        <div class="m-r-20 align-self-center"><img src="assets/images/icon/list.png" alt="Income" /></div>
+                        <div class="align-self-center">
+                            <h6 class="text-white m-t-10 m-b-0">Nombre total de transaction</h6>
+                            <h2 class="m-t-0 text-white">{{transactionsTotal}}</h2></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="card bg-success">
+                <div class="card-body">
+                    <div class="d-flex no-block">
+                        <div class="m-r-20 align-self-center"><img src="assets/images/icon/success.png" alt="Income" /></div>
+                        <div class="align-self-center">
+                            <h6 class="text-white m-t-10 m-b-0">Transaction Succès</h6>
+                            <h2 class="m-t-0 text-white">{{transactionsSuccess}}</h2></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="card bg-danger">
+              <div class="card-body">
+                  <div class="d-flex no-block">
+                      <div class="m-r-20 align-self-center"><img src="assets/images/icon/failed.png" alt="Income" /></div>
+                      <div class="align-self-center">
+                          <h6 class="text-white m-t-10 m-b-0">Transaction échouées</h6>
+                          <h2 class="m-t-0 text-white">{{transactionsFailed}}</h2></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="card bg-primary">
+                <div class="card-body">
+                    <div class="d-flex no-block">
+                        <div class="m-r-20 align-self-center"><img src="assets/images/icon/pending.png" alt="Income" /></div>
+                        <div class="align-self-center">
+                            <h6 class="text-white m-t-10 m-b-0">Transaction suspendues</h6>
+                            <h2 class="m-t-0 text-white">{{transactionsHold}}</h2></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title"><span class="lstick"></span>Transactions récentes</h4>
+                    <div class="table-responsive">
+                        <table class="table vm no-th-brd pro-of-month mb-0 no-wrap">
+                            <thead>
+                                <tr>
+                                    <th>Réf.</th>
+                                    <th>Code client</th>
+                                    <th>Montant</th>
+                                    <th>Service</th>
+                                    <th>Date</th>
+                                    <th>Lieu</th>
+                                    <th>Statut</th>
+                                    <th> Détails</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let transaction of latestTransactions">
+                                    <td>{{transaction.operationRef}}</td>
+                                    <td>{{transaction.clientCode}}</td>
+                                    <td>{{transaction.amount}}</td>
+                                    <td>{{transaction.service.name}}</td>
+                                    <td>{{transaction.created}}</td>
+                                    <td>{{transaction.kiosk.name}}</td>
+                                    <td *ngIf="transaction.status==0"><span class="label label-success label-rounded">Succès</span></td>
+                                    <td *ngIf="transaction.status==1"><span class="label label-danger label-rounded">Echec</span></td>
+                                    <td *ngIf="transaction.status==2"><span class="label label-danger label-rounded">Suspendu</span></td>
+                                    <td><button type="button" class="btn-circle btn-lg btn-primary float-right text-white border-0">
+                                        <i class="fas fa-eye"></i>
+                                    </button></td>
+
+                                </tr>
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div> 
+<!--     <div class="card">
+        <div class="card-body">
+            <h4 class="card-title mb-0"><span class="lstick"></span>Suivi des Transactions </h4>
+            <span class="card-subtitle"></span>
+        <div class="d-md-flex mt-3">
+            <input type="text" placeholder="Search" class="form-control w-auto" [(ngModel)]="csearchTerm" />
+            <button type="button"  class="btn btn-primary ml-auto" (click)="openModal(editModal, null)">Filtrer</button>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped no-wrap border mt-4">
+                <thead>
+                    <tr>
+                        <th >ID</th>
+                        <th sortable="Name" (sort)="onSort($event)">Name</th>
+                        <th sortable="UserName" (sort)="onSort($event)">User Name</th>
+                        <th sortable="Email" (sort)="onSort($event)">Email</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let client of cfilterClient | slice: (cpage-1) * cpageSize : (cpage-1) * cpageSize + cpageSize">
+                        <td>{{ client.Id }}</td>
+                        <td>
+                            <img [src]='client.imagePath'class="mr-2 rounded-circle" style="width: 30px">
+                            <ngb-highlight [result]="client.Name" [term]="csearchTerm"></ngb-highlight>
+                        </td>
+                        <td>
+                            <ngb-highlight [result]="client.UserName" [term]="csearchTerm"></ngb-highlight>
+                        </td>
+                        <td>
+                            <ngb-highlight [result]="client.Email" [term]="csearchTerm"></ngb-highlight>
+                        </td>
+
+
+                        <td>
+                           <i class="ti-pencil text-info m-r-10 pointer"  (click)="openModal(editModal, client)"></i>
+                            <i class="ti-trash text-danger pointer" (click)="delete(client.Id)"></i> 
+                        </td>
+
+
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="d-flex justify-content-between p-2">    
+                
+                <select class="custom-select" style="width: auto" [(ngModel)]="cpageSize">
+                <option [ngValue]="2">2 items per page</option>
+                <option [ngValue]="4">4 items per page</option>
+                <option [ngValue]="6">6 items per page</option>
+              </select>
+            </div>
+        </div>
+        </div>
+    </div> -->
+</div>
+</div> 

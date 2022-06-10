@@ -1,0 +1,42 @@
+<div class="auth-wrapper d-flex no-block justify-content-center align-items-center mainn" style="background:url(https://www.sk-automate.com/wp-content/uploads/2019/02/arrow-slide3.jpg) no-repeat center center;background-size: cover;">
+    <div class="auth-box on-sidebar m-3 m-md-0">
+        <div id="loginform" [ngClass]="{'d-none': recoverform}">
+            <div class="logo">
+                <span class="db"><img style="width: 40%; margin-top: 11em;"src="https://www.sk-automate.com/wp-content/uploads/2018/07/Untitled-2.png" alt="logo" /></span>
+                <h5 class="font-medium m-b-20">Se connecter</h5>
+            </div>
+            <!-- Form -->
+             <div class="row">
+                <div class="col-12">
+                    <form class="form-horizontal m-t-20" id="loginform">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="ti-user"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Nom d'utilisateur" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon2"><i class="ti-pencil"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Mot de passe" aria-label="Password" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <div class="custom-control custom-checkbox d-flex">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                    <label class="custom-control-label font-14" for="customCheck1">Se souvenir de moi</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group text-center">
+                            <div class="col-xs-12 p-b-20">
+                                <a (click)="login()" class="btn btn-block btn-lg btn-info" >Se connecter</a>
+                            </div> 
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
