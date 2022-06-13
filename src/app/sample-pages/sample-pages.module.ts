@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {  RouterModule } from '@angular/router';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DataTablesModule } from "angular-datatables";
 
 import { SamplePagesRoutes } from './sample-pages.routing';
 import { HelperclassesComponent } from './helper-classes/hc.component';
@@ -18,7 +19,8 @@ import { TransactionComponent } from './transaction/transaction.component';
     RouterModule.forChild(SamplePagesRoutes),
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    DataTablesModule
   ],
   declarations: [
     HelperclassesComponent,

@@ -1,16 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { TransactionModel } from 'src/app/models/transaction.model';
 import { TransactionData } from 'src/app/models/transactionData.model';
 import { TransactionService } from 'src/app/services/transaction.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { DataTableDirective } from 'angular-datatables';
+import { Subject } from 'rxjs';
 
 @Component({
   templateUrl: './pricing.component.html',
   styleUrls:['./pricing.component.css']
 })
 export class PricingComponent {
+  @ViewChild(DataTableDirective)
+  dtElement: DataTableDirective;
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
+
   allTransactions: TransactionData;
   latestTransactions: TransactionModel[];
   transactionsTotal: number= 0;
@@ -28,9 +35,41 @@ export class PricingComponent {
     private toastr: ToastrService) {
   }
 
+  async ngOnInit(){
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 2,
+    };
+
+    this.currentTrasaction = {
+      operationRef: "",
+      clientCode: "",
+      clientAccount: "",
+      creditAccount: "",
+      amount: 0,
+      serviceName: "",
+      created: "",
+      kioskName: "",
+      status: "",
+      billetage: {
+        note_10000: "",
+        note_5000: "",
+        note_2000: "",
+        note_1000: ""
+      }
+    }
+
+    setTimeout(function () {
+      $(function () {
+        $('#transactions').DataTable();
+      });
+    }, 3000);
+
+    //await this.GetAllTransactions();
+  }
+
   async ngAfterViewInit() {
     await this.GetAllTransactions();
-
    }
 
   async GetAllTransactions(){
@@ -51,7 +90,7 @@ export class PricingComponent {
         this.transactionsHold++
       }
       this.latestTransactions = this.allTransactions.data
-
+      this.dtTrigger.next();
      });
      this.transactionsTotal =this.allTransactions.totalItemsCount;
 
@@ -73,6 +112,44 @@ export class PricingComponent {
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+  }
+
+  setCurrentTransaction(transaction){
+    this.currentTrasaction = {
+      operationRef: "",
+      clientCode: "",
+      clientAccount: "",
+      creditAccount: "",
+      amount: 0,
+      serviceName: "",
+      created: "",
+      kioskName: "",
+      status: "",
+      billetage: {
+        note_10000: "",
+        note_5000: "",
+        note_2000: "",
+        note_1000: ""
+      }
+    }
+
+    this.currentTrasaction = {
+      operationRef: transaction.operationRef,
+      clientCode: transaction.clientCode,
+      clientAccount: transaction.clientAccount,
+      creditAccount: transaction.creditAccount,
+      amount: transaction.amount,
+      serviceName: transaction.service.name,
+      created: transaction.created,
+      kioskName: transaction.kiosk.name,
+      status: transaction.status,
+      billing: {
+        note_10000: transaction.note_10000,
+        note_5000: transaction.note_5000,
+        note_2000: transaction.note_2000,
+        note_1000: transaction.note_1000
+      }
+    }
   }
 
   GetTransaction(id){
