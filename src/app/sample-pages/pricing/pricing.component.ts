@@ -4,6 +4,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { TransactionModel } from 'src/app/models/transaction.model';
 import { TransactionData } from 'src/app/models/transactionData.model';
 import { TransactionService } from 'src/app/services/transaction.service';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   templateUrl: './pricing.component.html',
@@ -16,8 +17,12 @@ export class PricingComponent {
   transactionsSuccess: number= 0;
   transactionsFailed:number= 0;
   transactionsHold:number= 0;
+  currentTrasaction: any;
+
+  closeResult = '';
 
   constructor(
+    private modalService: NgbModal,
     private transaction: TransactionService,
     private ngxService: NgxUiLoaderService,
     private toastr: ToastrService) {
@@ -27,7 +32,7 @@ export class PricingComponent {
     await this.GetAllTransactions();
 
    }
-  
+
   async GetAllTransactions(){
     this.ngxService.start();
     this.toastr.info('Traitement en cours', 'Info');
@@ -46,7 +51,7 @@ export class PricingComponent {
         this.transactionsHold++
       }
       this.latestTransactions = this.allTransactions.data
-      
+
      });
      this.transactionsTotal =this.allTransactions.totalItemsCount;
 
@@ -62,5 +67,26 @@ export class PricingComponent {
 
   }
 
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  GetTransaction(id){
+
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
 
 }

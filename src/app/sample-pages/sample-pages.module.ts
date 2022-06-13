@@ -10,6 +10,7 @@ import { HelperclassesComponent } from './helper-classes/hc.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PricingComponent } from './pricing/pricing.component';
+import { TransactionComponent } from './transaction/transaction.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { PricingComponent } from './pricing/pricing.component';
     HelperclassesComponent,
     InvoiceComponent,
     ProfileComponent,
-    PricingComponent
+    PricingComponent,
+    TransactionComponent
   ]
 })
 export class SamplePagesModule {}
