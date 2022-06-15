@@ -147,6 +147,9 @@
       {{currentKiosk.Name}}
     </h4>
 
+    <span class="label label-success label-rounded" *ngIf="currentKiosk.PointsMonitorings[0].Online == true">En Ligne</span>
+        <span class="label label-danger label-rounded" *ngIf="currentKiosk.PointsMonitorings[0].Online == false">Hors Ligne</span>
+
     <button
       class="btn btn-outline-default"
       (click)="modal.dismiss('Cross click')"
@@ -160,7 +163,7 @@
         <div class="form-group col-sm mb-3">
           <div class="input-group">
             <span class="font-weight-bold">Adresse&nbsp;&nbsp;</span>
-            <span class="font-weight-light">{{currentKiosk.Adress}}</span>
+            <span class="font-weight-normal">{{currentKiosk.Adress}}</span>
           </div>
         </div>
       </div>
@@ -168,23 +171,23 @@
         <div class="form-group col-sm mb-3">
           <div class="input-group">
             <span class="font-weight-bold">Date&nbsp;&nbsp;</span>
-            <span class="font-weight-light">{{currentKiosk.InputDate}}</span>
+            <span class="font-weight-normal">{{currentKiosk.InputDate}}</span>
           </div>
         </div>
       </div>
       <hr>
-      <h3 class="font-weight-bold">Cassettes</h3>
+      <h4 class="text-muted">Cassettes</h4>
       <div class="row">
         <div class="form-group col-sm mb-3">
           <div class="input-group">
             <span class="font-weight-bold">Montant total Entré&nbsp;&nbsp;</span>
-            <span class="font-weight-light">{{currentKiosk.PointsCassettes[0].TotalCashInput}}</span>
+            <span class="font-weight-normal">{{currentKiosk.PointsCassettes[0].TotalCashInput}}</span>
           </div>
         </div>
         <div class="form-group col-sm mb-3">
           <div class="input-group">
             <span class="font-weight-bold">Montant total sorti&nbsp;&nbsp;</span>
-            <span class="font-weight-light">{{currentKiosk.PointsCassettes[0].TotalCashOutput}}</span>
+            <span class="font-weight-normal">{{currentKiosk.PointsCassettes[0].TotalCashOutput}}</span>
           </div>
         </div>
       </div>
@@ -192,13 +195,13 @@
         <div class="form-group col-sm mb-3">
           <div class="input-group">
             <span class="font-weight-bold">Capacité de sortie de la cassette&nbsp;&nbsp;</span>
-            <span class="font-weight-light">{{currentKiosk.PointsCassettes[0].OutputCassetteCapacity}}</span>
+            <span class="font-weight-normal">{{currentKiosk.PointsCassettes[0].OutputCassetteCapacity}}</span>
           </div>
         </div>
         <div class="form-group col-sm mb-3">
           <div class="input-group">
             <span class="font-weight-bold">Nombre de cassette de sortie&nbsp;&nbsp;</span>
-            <span class="font-weight-light">{{currentKiosk.PointsCassettes[0].OutputCassetteCount}}</span>
+            <span class="font-weight-normal">{{currentKiosk.PointsCassettes[0].OutputCassetteCount}}</span>
           </div>
         </div>
       </div>
@@ -206,30 +209,32 @@
         <div class="form-group col-sm mb-3">
           <div class="input-group">
             <span class="font-weight-bold">Capacité d'entrée de la cassette&nbsp;&nbsp;</span>
-            <span class="font-weight-light">{{currentKiosk.PointsCassettes[0].InputCassetteCapacity}}</span>
+            <span class="font-weight-normal">{{currentKiosk.PointsCassettes[0].InputCassetteCapacity}}</span>
           </div>
         </div>
         <div class="font-weight-bold" class="form-group col-sm mb-3">
           <div class="input-group">
             <span class="font-weight-bold">Nombre de cassettes d'entrée&nbsp;&nbsp;</span>
-            <span class="font-weight-light">{{currentKiosk.PointsCassettes[0].InputCassetteCount}}</span>
+            <span class="font-weight-normal">{{currentKiosk.PointsCassettes[0].InputCassetteCount}}</span>
           </div>
         </div>
       </div>
       <hr>
-      <br>
-      <h3 class="font-weight-bold">Supervision</h3>
+      <h4 class="text-muted">Supervision</h4>
+
       <div class="row">
         <div class="form-group col-sm mb-3">
           <div class="input-group">
-            <span class="font-weight-bold">Etat&nbsp;&nbsp;</span>
-            <span class="font-weight-light">{{currentKiosk.PointsMonitorings[0].State}}</span>
+            <span class="font-weight-bold">Date de dernière activité&nbsp;&nbsp;</span>
+            <span class="font-weight-normal">{{currentKiosk.PointsMonitorings[0].LastActive}}</span>
           </div>
         </div>
+      </div>
+      <div class="row">
         <div class="form-group col-sm mb-3">
           <div class="input-group">
-            <span class="font-weight-bold">Date de dernière activité&nbsp;&nbsp;</span>
-            <span class="font-weight-light">{{currentKiosk.PointsMonitorings[0].LastActive}}</span>
+            <span class="font-weight-bold">Date de dernière transaction&nbsp;&nbsp;</span>
+            <span class="font-weight-normal">{{currentKiosk.PointsMonitorings[0].PaymentDate}}</span>
           </div>
         </div>
       </div>
@@ -237,13 +242,13 @@
         <div class="form-group col-sm mb-3">
           <div class="input-group">
             <span class="font-weight-bold">Version logic&nbsp;&nbsp;</span>
-            <span class="font-weight-light">{{currentKiosk.PointsMonitorings[0].VersionLogic}}</span>
+            <span class="font-weight-normal">{{currentKiosk.PointsMonitorings[0].VersionLogic}}</span>
           </div>
         </div>
         <div class="form-group col-sm mb-3">
           <div class="input-group">
             <span class="font-weight-bold">Version service&nbsp;&nbsp;</span>
-            <span class="font-weight-light">{{currentKiosk.PointsMonitorings[0].VersionService}}</span>
+            <span class="font-weight-normal">{{currentKiosk.PointsMonitorings[0].VersionService}}</span>
           </div>
         </div>
       </div>
@@ -251,30 +256,16 @@
         <div class="form-group col-sm mb-3">
           <div class="input-group">
             <span class="font-weight-bold">Statut du code de caisse&nbsp;&nbsp;</span>
-            <span class="font-weight-light">{{currentKiosk.PointsMonitorings[0].CashcodeStatus}}</span>
-          </div>
-        </div>
-        <div class="form-group col-sm mb-3">
-          <div class="input-group">
-            <span class="font-weight-bold">En ligne&nbsp;&nbsp;</span>
-            <span class="label label-success label-rounded" *ngIf="currentKiosk.PointsMonitorings[0].online == true" class="font-weight-light">En Ligne</span>
-            <span class="label label-danger label-rounded" *ngIf="currentKiosk.PointsMonitorings[0].online == false" class="font-weight-light">Hors Ligne</span>
+            <span class="font-weight-normal">{{currentKiosk.PointsMonitorings[0].CashcodeStatus}}</span>
           </div>
         </div>
       </div>
+
       <div class="row">
         <div class="form-group col-sm mb-3">
           <div class="input-group">
             <span class="font-weight-bold">Etiquette&nbsp;&nbsp;</span>
-            <span class="font-weight-light">{{currentKiosk.PointsMonitorings[0].Metka}}</span>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-group col-sm mb-3">
-          <div class="input-group">
-            <span class="font-weight-bold">Date de paiement&nbsp;&nbsp;</span>
-            <span class="font-weight-light">{{currentKiosk.PointsMonitorings[0].PaymentDate}}</span>
+            <span class="font-weight-normal">{{currentKiosk.PointsMonitorings[0].Metka}}</span>
           </div>
         </div>
       </div>
