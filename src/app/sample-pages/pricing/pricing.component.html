@@ -144,85 +144,115 @@
   </div>
   <div class="modal-body">
     <form>
-      <div class="mb-3">
-        <label for="ref">Référence</label>
-        <div class="input-group">
-          <input id="ref" class="form-control" value="{{currentTrasaction.operationRef}}" />
+      <div class="row">
+        <div class="form-group col mb-3">
+          <div class="input-group">
+            <span class="font-weight-bold">Référence&nbsp;&nbsp;</span>
+            <span class="font-weight-normal">{{currentTrasaction.operationRef}}</span>
+          </div>
         </div>
       </div>
-      <div class="mb-3">
-        <label for="clientAccount">Statut</label>&nbsp;&nbsp;&nbsp;
-        <button
-          class="btn btn-sm btn-success btn-rounded"
-          *ngIf="currentTrasaction.status == 0">
-          Succès
-        </button>
-        <button
-          class="btn btn-sm btn-danger btn-rounded"
-          *ngIf="currentTrasaction.status == 1">
-          Echec
-        </button>
-        <button
-          class="btn btn-sm btn-info btn-rounded"
-          *ngIf="currentTrasaction.status == 2">
-          Suspendu
-        </button>
-      </div>
-      <div class="mb-3">
-        <label for="clientAccount">Code client</label>
-        <div class="input-group">
-          <input id="clientAccount" class="form-control" value="{{currentTrasaction.clientCode}}"/>
+
+      <div class="row">
+        <div class="form-group col mb-3">
+          <div class="input-group">
+            <span class="font-weight-bold">Code client&nbsp;&nbsp;</span>
+            <span class="font-weight-normal">{{currentTrasaction.clientCode}}</span>
+          </div>
+        </div>
+
+        <div class="form-group col mb-3">
+          <div class="input-group">
+            <span class="font-weight-bold">Statut&nbsp;&nbsp;</span>
+            <button
+            class="btn btn-sm btn-success btn-rounded"
+            *ngIf="currentTrasaction.status == 0">
+            Succès
+          </button>
+          <button
+            class="btn btn-sm btn-danger btn-rounded"
+            *ngIf="currentTrasaction.status == 1">
+            Echec
+          </button>
+          <button
+            class="btn btn-sm btn-info btn-rounded"
+            *ngIf="currentTrasaction.status == 2">
+            Suspendu
+          </button>
+          </div>
         </div>
       </div>
-      <div class="mb-3">
-        <label for="clientAccount">Compte client</label>
-        <div class="input-group">
-          <input id="clientAccount" class="form-control" value="{{currentTrasaction.clientAccount}}"/>
+
+      <div class="row">
+
+        <div class="form-group col mb-3">
+          <div class="input-group">
+            <span class="font-weight-bold">Compte client&nbsp;&nbsp;</span>
+            <span class="font-weight-normal">{{currentTrasaction.clientAccount}}</span>
+          </div>
+        </div>
+
+        <div class="form-group col mb-3">
+          <div class="input-group">
+            <span class="font-weight-bold">Compte crédit&nbsp;&nbsp;</span>
+            <span class="font-weight-normal">{{currentTrasaction.creditAccount}}</span>
+          </div>
         </div>
       </div>
-      <div class="mb-3">
-        <label for="creditAccount">Compte crédit</label>
-        <div class="input-group">
-          <input id="creditAccount" class="form-control" value="{{currentTrasaction.creditAccount}}"/>
+
+      <div class="row">
+        <div class="form-group col mb-3">
+          <div class="input-group">
+            <span class="font-weight-bold">Montant&nbsp;&nbsp;</span>
+            <span class="font-weight-normal">{{currentTrasaction.amount}}</span>
+          </div>
         </div>
       </div>
-      <div class="mb-3">
-        <label for="amount">Montant</label>
-        <div class="input-group">
-          <input id="amount" class="form-control" value="{{currentTrasaction.amount}}"/>
+      <hr>
+      <h4 class="text-muted">Billetage</h4>
+
+      <div class="row">
+        <div class="form-group col mb-3">
+          <div class="input-group">
+            <span class="font-weight-bold">Note_10000&nbsp;&nbsp;</span>
+            <span class="font-weight-normal">{{currentTrasaction.billing.note_10000}}</span>
+          </div>
+        </div>
+        <div class="form-group col mb-3">
+          <div class="input-group">
+            <span class="font-weight-bold">Note_5000&nbsp;&nbsp;</span>
+            <span class="font-weight-normal">{{currentTrasaction.billing.note_5000}}</span>
+          </div>
         </div>
       </div>
-      <div class="mb-3">
-        <label for="billing">Billetage</label>
-        <div class="input-group">
-          <input
-            id="billing" class="form-control"
-            style="width: 50% !important"
-            value="Note_10000: {{currentTrasaction.billing.note_10000}}"/>
-          <input
-            id="billing" class="form-control"
-            style="width: 50% !important"
-            value="Note_5000: {{currentTrasaction.billing.note_5000}}"/>
-          <input
-            id="billing" class="form-control"
-            style="width: 50% !important"
-            value="Note_2000: {{currentTrasaction.billing.note_2000}}"/>
-          <input
-            id="billing" class="form-control"
-            style="width: 50% !important"
-            value="Note_1000: {{currentTrasaction.billing.note_1000}}"/>
+
+      <div class="row">
+        <div class="form-group col mb-3">
+          <div class="input-group">
+            <span class="font-weight-bold">Note_2000&nbsp;&nbsp;</span>
+            <span class="font-weight-normal">{{currentTrasaction.billing.note_2000}}</span>
+          </div>
+        </div>
+        <div class="form-group col mb-3">
+          <div class="input-group">
+            <span class="font-weight-bold">Note_1000&nbsp;&nbsp;</span>
+            <span class="font-weight-normal">{{currentTrasaction.billing.note_1000}}</span>
+          </div>
         </div>
       </div>
-      <div class="mb-3">
-        <label for="service">Service</label>
-        <div class="input-group">
-          <input id="service" class="form-control" value="{{currentTrasaction.serviceName}}"/>
+
+      <div class="row">
+        <div class="form-group col mb-3">
+          <div class="input-group">
+            <span class="font-weight-bold">Service&nbsp;&nbsp;</span>
+            <span class="font-weight-normal">{{currentTrasaction.serviceName}}</span>
+          </div>
         </div>
-      </div>
-      <div class="mb-3">
-        <label for="kioskName">Lieu</label>
-        <div class="input-group">
-          <input id="kioskName" class="form-control" value="{{currentTrasaction.kioskName}}"/>
+        <div class="form-group col mb-3">
+          <div class="input-group">
+            <span class="font-weight-bold">Lieu&nbsp;&nbsp;</span>
+            <span class="font-weight-normal">{{currentTrasaction.kioskName}}</span>
+          </div>
         </div>
       </div>
     </form>
