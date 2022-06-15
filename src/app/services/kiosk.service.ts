@@ -80,7 +80,8 @@ export class KioskService{
       {responseType: 'json', headers});
     }
 
-    updateKioskDetails(kioskId, clientId, payload){
+    updateKioskDetails(data){
+      console.log('data ', data);
       var auth = 'Basic '+ btoa(this.username +":" +this.password);
       console.log('auth ', auth);
       const headers = new  HttpHeaders({
@@ -89,7 +90,16 @@ export class KioskService{
         'Access-Control-Allow-Methods': 'POST,GET,PUT,PATCH,DELETE,OPTIONS'
       });
 
-      return this.http.put<any>('https://sk-automate.tech/paymentsboapi/kiosks/' + kioskId, payload,
+      const payload = {
+        clientId: data.ClientId,
+        note_10000: data.Note_10000,
+        note_5000: data.Note_5000,
+        note_2000: data.Note_2000,
+        note_1000: data.Note_1000,
+        updateType: 0
+      };
+
+      return this.http.put<any>('https://sk-automate.tech/paymentsboapi/kiosks/' + data.Id, payload,
       {responseType: 'json', headers});
     }
 

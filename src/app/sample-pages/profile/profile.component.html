@@ -9,7 +9,8 @@
                     <div class="m-r-20 align-self-center"><img src="assets/images/icon/kiosk.png" alt="Income" /></div>
                     <div class="align-self-center">
                         <h6 class="text-white m-t-10 m-b-0">Nombre total de guichet</h6>
-                        <h2 class="m-t-0 text-white">{{kioskTotal}}</h2></div>
+                        <h2 class="m-t-0 text-white">{{kioskTotal}}</h2>
+                    </div>
                 </div>
             </div>
         </div>
@@ -73,14 +74,14 @@
                                 <td>{{kiosk.pointsMonitorings[0].paymentDate}}</td>
                                 <td>
                                     <button
-                                        class="btn btn-info"
+                                        class="btn btn-sm btn-info"
                                         (click)="setCurrentKiosk(kiosk)"
                                         (click)="open(kioskContent)">AFFICHER
                                     </button>
                                 </td>
                                 <td>
                                     <button
-                                        class="btn btn-warning"
+                                        class="btn btn-sm btn-warning"
                                         (click)="getKiosksDetails(kiosk.extId)"
                                         (click)="open(content)">MODIFIER
                                     </button>
@@ -135,8 +136,7 @@
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-warning"
-            (click)="updateKioskBilling()"
-            (click)="modal.close('Save click')">Modifier
+            (click)="updateKioskBilling()">Modifier
     </button>
   </div>
 </ng-template>
@@ -158,17 +158,17 @@
     <form>
       <div class="row">
         <div class="form-group col-sm mb-3">
-          <label class="font-weight-bold" for="ConfigId">Adresse</label>
           <div class="input-group">
-            <input id="Adress" name="Adress" class="form-control" [(ngModel)]="currentKiosk.Adress" [disabled]="true"/>
+            <span class="font-weight-bold">Adresse&nbsp;&nbsp;</span>
+            <span class="font-weight-light">{{currentKiosk.Adress}}</span>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="form-group col-sm mb-3">
-          <label class="font-weight-bold" for="inputDate">Date</label>
           <div class="input-group">
-            <input id="inputDate" name="inputDate" class="form-control" [(ngModel)]="currentKiosk.InputDate" [disabled]="true"/>
+            <span class="font-weight-bold">Date&nbsp;&nbsp;</span>
+            <span class="font-weight-light">{{currentKiosk.InputDate}}</span>
           </div>
         </div>
       </div>
@@ -176,164 +176,105 @@
       <h3 class="font-weight-bold">Cassettes</h3>
       <div class="row">
         <div class="form-group col-sm mb-3">
-          <label class="font-weight-bold" for="ConfigId">Total Cash Input</label>
           <div class="input-group">
-            <input id="TotalCashInput" name="TotalCashInput" class="form-control"
-                  [(ngModel)]="currentKiosk.PointsCassettes[0].TotalCashInput" [disabled]="true"/>
+            <span class="font-weight-bold">Montant total Entré&nbsp;&nbsp;</span>
+            <span class="font-weight-light">{{currentKiosk.PointsCassettes[0].TotalCashInput}}</span>
           </div>
         </div>
         <div class="form-group col-sm mb-3">
-          <label class="font-weight-bold" for="ConfigId">Total Cash Output</label>
           <div class="input-group">
-            <input id="TotalCashOutput" name="TotalCashOutput" class="form-control"
-                  [(ngModel)]="currentKiosk.PointsCassettes[0].TotalCashOutput" [disabled]="true"/>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-group col-sm mb-3">
-          <label class="font-weight-bold" for="ConfigId">Output Cassette Capacity</label>
-          <div class="input-group">
-            <input id="OutputCassetteCapacity" name="OutputCassetteCapacity" class="form-control"
-                   [(ngModel)]="currentKiosk.PointsCassettes[0].OutputCassetteCapacity" [disabled]="true"/>
-          </div>
-        </div>
-        <div class="form-group col-sm mb-3">
-          <label class="font-weight-bold" for="ConfigId">Output Cassette Count</label>
-          <div class="input-group">
-            <input id="OutputCassetteCount" name="OutputCassetteCount" class="form-control"
-                   [(ngModel)]="currentKiosk.PointsCassettes[0].OutputCassetteCount" [disabled]="true"/>
+            <span class="font-weight-bold">Montant total sorti&nbsp;&nbsp;</span>
+            <span class="font-weight-light">{{currentKiosk.PointsCassettes[0].TotalCashOutput}}</span>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="form-group col-sm mb-3">
-          <label class="font-weight-bold" for="ConfigId">Input Cassette Capacity</label>
           <div class="input-group">
-            <input id="InputCassetteCapacity" name="InputCassetteCapacity" class="form-control"
-                   [(ngModel)]="currentKiosk.PointsCassettes[0].InputCassetteCapacity" [disabled]="true"/>
+            <span class="font-weight-bold">Capacité de sortie de la cassette&nbsp;&nbsp;</span>
+            <span class="font-weight-light">{{currentKiosk.PointsCassettes[0].OutputCassetteCapacity}}</span>
+          </div>
+        </div>
+        <div class="form-group col-sm mb-3">
+          <div class="input-group">
+            <span class="font-weight-bold">Nombre de cassette de sortie&nbsp;&nbsp;</span>
+            <span class="font-weight-light">{{currentKiosk.PointsCassettes[0].OutputCassetteCount}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm mb-3">
+          <div class="input-group">
+            <span class="font-weight-bold">Capacité d'entrée de la cassette&nbsp;&nbsp;</span>
+            <span class="font-weight-light">{{currentKiosk.PointsCassettes[0].InputCassetteCapacity}}</span>
           </div>
         </div>
         <div class="font-weight-bold" class="form-group col-sm mb-3">
-          <label for="ConfigId">Input Cassette Count</label>
           <div class="input-group">
-            <input id="InputCassetteCount" name="InputCassetteCount" class="form-control"
-                   [(ngModel)]="currentKiosk.PointsCassettes[0].InputCassetteCount" [disabled]="true"/>
+            <span class="font-weight-bold">Nombre de cassettes d'entrée&nbsp;&nbsp;</span>
+            <span class="font-weight-light">{{currentKiosk.PointsCassettes[0].InputCassetteCount}}</span>
           </div>
         </div>
       </div>
       <hr>
       <br>
-      <h3 class="font-weight-bold">Monitoring</h3>
+      <h3 class="font-weight-bold">Supervision</h3>
       <div class="row">
         <div class="form-group col-sm mb-3">
-          <label class="font-weight-bold" for="ConfigId">State</label>
           <div class="input-group">
-            <input id="State" name="State" class="form-control"
-                  [(ngModel)]="currentKiosk.PointsMonitorings[0].State" [disabled]="true"/>
+            <span class="font-weight-bold">Etat&nbsp;&nbsp;</span>
+            <span class="font-weight-light">{{currentKiosk.PointsMonitorings[0].State}}</span>
           </div>
         </div>
         <div class="form-group col-sm mb-3">
-          <label class="font-weight-bold" for="ConfigId">Last Active</label>
           <div class="input-group">
-            <input id="TotalCashInput" name="TotalCashInput" class="form-control"
-                  [(ngModel)]="currentKiosk.PointsMonitorings[0].LastActive" [disabled]="true"/>
+            <span class="font-weight-bold">Date de dernière activité&nbsp;&nbsp;</span>
+            <span class="font-weight-light">{{currentKiosk.PointsMonitorings[0].LastActive}}</span>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="form-group col-sm mb-3">
-          <label class="font-weight-bold" for="ConfigId">VersionLogic</label>
           <div class="input-group">
-            <input id="VersionService" name="VersionService" class="form-control"
-                  [(ngModel)]="currentKiosk.PointsMonitorings[0].VersionService" [disabled]="true"/>
+            <span class="font-weight-bold">Version logic&nbsp;&nbsp;</span>
+            <span class="font-weight-light">{{currentKiosk.PointsMonitorings[0].VersionLogic}}</span>
           </div>
         </div>
         <div class="form-group col-sm mb-3">
-          <label class="font-weight-bold" for="ConfigId">VersionService</label>
           <div class="input-group">
-            <input id="VersionService" name="VersionService" class="form-control"
-                  [(ngModel)]="currentKiosk.PointsMonitorings[0].VersionService" [disabled]="true"/>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-group col-sm mb-3">
-          <label class="font-weight-bold" for="ConfigId">PrinterLenta</label>
-          <div class="input-group">
-            <input id="PrinterLenta" name="PrinterLenta" class="form-control"
-                  [(ngModel)]="currentKiosk.PointsMonitorings[0].PrinterLenta" [disabled]="true"/>
-          </div>
-        </div>
-        <div class="form-group col-sm mb-3">
-          <label class="font-weight-bold" for="ConfigId">CashcodeStatus</label>
-          <div class="input-group">
-            <input id="CashcodeStatus" name="CashcodeStatus" class="form-control"
-                  [(ngModel)]="currentKiosk.PointsMonitorings[0].CashcodeStatus" [disabled]="true"/>
-          </div>
-        </div>
-        <div class="form-group col-sm mb-3">
-          <label class="font-weight-bold" for="Online">Online</label>
-          <div class="input-group">
-            <input id="Online" name="Online" class="form-control"
-                  [(ngModel)]="currentKiosk.PointsMonitorings[0].Online" [disabled]="true"/>
+            <span class="font-weight-bold">Version service&nbsp;&nbsp;</span>
+            <span class="font-weight-light">{{currentKiosk.PointsMonitorings[0].VersionService}}</span>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="form-group col-sm mb-3">
-          <label class="font-weight-bold" for="Metka">Metka</label>
           <div class="input-group">
-            <input id="Metka" name="Metka" class="form-control"
-                  [(ngModel)]="currentKiosk.PointsMonitorings[0].Metka" [disabled]="true"/>
+            <span class="font-weight-bold">Statut du code de caisse&nbsp;&nbsp;</span>
+            <span class="font-weight-light">{{currentKiosk.PointsMonitorings[0].CashcodeStatus}}</span>
+          </div>
+        </div>
+        <div class="form-group col-sm mb-3">
+          <div class="input-group">
+            <span class="font-weight-bold">En ligne&nbsp;&nbsp;</span>
+            <span class="label label-success label-rounded" *ngIf="currentKiosk.PointsMonitorings[0].online == true" class="font-weight-light">En Ligne</span>
+            <span class="label label-danger label-rounded" *ngIf="currentKiosk.PointsMonitorings[0].online == false" class="font-weight-light">Hors Ligne</span>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="form-group col-sm mb-3">
-          <label class="font-weight-bold" for="Metka">MsgCount</label>
           <div class="input-group">
-            <input id="MsgCount" name="MsgCount" class="form-control"
-                  [(ngModel)]="currentKiosk.PointsMonitorings[0].MsgCount" [disabled]="true"/>
-          </div>
-        </div>
-        <div class="form-group col-sm mb-3">
-          <label class="font-weight-bold" for="Metka">PaymentDate</label>
-          <div class="input-group">
-            <input id="PaymentDate" name="PaymentDate" class="form-control"
-                  [(ngModel)]="currentKiosk.PointsMonitorings[0].PaymentDate" [disabled]="true"/>
+            <span class="font-weight-bold">Etiquette&nbsp;&nbsp;</span>
+            <span class="font-weight-light">{{currentKiosk.PointsMonitorings[0].Metka}}</span>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="form-group col-sm mb-3">
-          <label class="font-weight-bold" for="NoteDate">NoteDate</label>
           <div class="input-group">
-            <input id="NoteDate" name="NoteDate" class="form-control"
-                  [(ngModel)]="currentKiosk.PointsMonitorings[0].NoteDate" [disabled]="true"/>
-          </div>
-        </div>
-        <div class="form-group col-sm mb-3">
-          <label class="font-weight-bold" for="NoteDate">NoteFinishedDate</label>
-          <div class="input-group">
-            <input id="NoteFinishedDate" name="NoteFinishedDate" class="form-control"
-                  [(ngModel)]="currentKiosk.PointsMonitorings[0].NoteFinishedDate" [disabled]="true"/>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-group col-sm mb-3">
-          <label class="font-weight-bold" for="NoteDate">Status</label>
-          <div class="input-group">
-            <input id="Status" name="Status" class="form-control"
-                  [(ngModel)]="currentKiosk.PointsMonitorings[0].Status" [disabled]="true"/>
-          </div>
-        </div>
-        <div class="form-group col-sm mb-3">
-          <label class="font-weight-bold" for="NoteDate">BlockReason</label>
-          <div class="input-group">
-            <input id="BlockReason" name="BlockReason" class="form-control"
-                  [(ngModel)]="currentKiosk.PointsMonitorings[0].BlockReason" [disabled]="true"/>
+            <span class="font-weight-bold">Date de paiement&nbsp;&nbsp;</span>
+            <span class="font-weight-light">{{currentKiosk.PointsMonitorings[0].PaymentDate}}</span>
           </div>
         </div>
       </div>

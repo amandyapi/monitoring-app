@@ -76,8 +76,10 @@ export class ProfileComponent {
     .toPromise()
     .then((res) => {
       let bill = res as any;
-      
+
       this.billing = {
+        Id: bill.id,
+        ClientId: bill.clientId,
         Note_10000: bill.note_10000,
         Note_5000: bill.note_5000,
         Note_2000: bill.note_2000,
@@ -92,8 +94,24 @@ export class ProfileComponent {
     });
   }
 
-  updateKioskBilling(){
+ async updateKioskBilling(){
     console.log('New Billing', this.billing);
+    //return false;
+    this.modalService.dismissAll();
+    this.ngxService.start();
+    this.toastr.info('Traitement en cours', 'Info');
+    (await this.kioskService.updateKioskDetails(this.billing))
+    .toPromise()
+    .then((res) => {
+      console.log('Update result', res);
+      this.ngxService.stop();
+      this.toastr.success('Mise à jour du billetage', 'Success');
+    })
+    .catch((err) => {
+      this.ngxService.stop();
+      console.warn('une erreur', err)
+      this.toastr.error(err.error, 'Erreur');
+    });
   }
 
   setCurrentKiosk(kiosk){
