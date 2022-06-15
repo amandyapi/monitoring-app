@@ -17,6 +17,19 @@ export class InvoiceComponent {
 
     }
 
+  ngOnInit(){
+    setTimeout(function () {
+      $(function () {
+        $('#services').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'csv', 'excel', 'pdf'
+            ]
+        });
+      });
+    }, 3000);
+  }
+
   async ngAfterViewInit() {
     await this.getServicesList();
    }
@@ -35,9 +48,9 @@ export class InvoiceComponent {
       this.ngxService.stop();
       console.warn('une erreur', err)
       this.toastr.error(err.error, 'Erreur');
-    }); 
+    });
   }
 
-  
-  
+
+
 }

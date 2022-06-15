@@ -61,7 +61,12 @@ export class PricingComponent {
 
     setTimeout(function () {
       $(function () {
-        $('#transactions').DataTable();
+        $('#transactions').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'csv', 'excel', 'pdf'
+            ]
+        });
       });
     }, 3000);
 

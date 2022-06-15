@@ -1,6 +1,6 @@
 <div class="card-body">
     <h4 class="card-title"><span class="lstick"></span>Reporting</h4>
-    <h6 class="card-subtitle">{{dateNow | date:'dd-MMMM-yyyy'}}</h6> 
+    <h6 class="card-subtitle">{{dateNow | date:'dd-MMMM-yyyy'}}</h6>
 </div>
 <div class="row">
   <div class="col-lg-4 col-md-6">
@@ -11,9 +11,9 @@
                   <div class="align-self-center">
                       <h6 class="text-white m-t-10 m-b-0">Nombre total de guichet</h6>
                       <h2 class="m-t-0 text-white">{{kioskTotal}}</h2></div>
-              </div> 
+              </div>
           </div>
-      </div> 
+      </div>
   </div>
   <div class="col-lg-4 col-md-6">
       <div class="card bg-cyan">
@@ -49,7 +49,7 @@
             <div class="card-body">
                 <h4 class="card-title"><span class="lstick"></span>Transactions récentes</h4>
                 <div class="table-responsive">
-                    <table class="table vm no-th-brd pro-of-month mb-0 no-wrap">
+                    <table id="transactions" class="table vm no-th-brd pro-of-month mb-0 no-wrap">
                         <thead>
                             <tr>
                                 <th>Réf.</th>
@@ -74,7 +74,7 @@
                                 <td *ngIf="transaction.status==2"><span class="label label-danger label-rounded">Suspendu</span></td>
 
                             </tr>
-                           
+
                         </tbody>
                     </table>
                 </div>

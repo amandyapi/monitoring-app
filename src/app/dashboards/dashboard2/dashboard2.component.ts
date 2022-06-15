@@ -1,7 +1,7 @@
 import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { KioskModel } from 'src/app/models/kiosk.model'; 
+import { KioskModel } from 'src/app/models/kiosk.model';
 import { TransactionModel } from 'src/app/models/transaction.model';
 import { TransactionData } from 'src/app/models/transactionData.model';
 import { KioskService } from 'src/app/services/kiosk.service';
@@ -22,8 +22,8 @@ export class Dashboard2Component implements AfterViewInit {
   transactionsFailed:number= 0;
   transactionsHold:number= 0;
   offlineKiosk= this.kioskTotal - this.onlineKiosk;
-  kioskList: KioskModel[]; 
-  
+  kioskList: KioskModel[];
+
   dateNow= new Date();
 
   constructor(
@@ -35,6 +35,23 @@ export class Dashboard2Component implements AfterViewInit {
     console.log(this.dateNow);
     console.log(this.dateNow.getDate());
   }
+
+  ngOnInit(){
+    setTimeout(function () {
+      $(function () {
+        $('#transactions').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'csv', 'excel', 'pdf'
+            ],
+            language: {
+              url: 'dataTables.french.json'
+          }
+        });
+      });
+    }, 3000);
+  }
+
 
   async ngAfterViewInit() {
     await this.getKiosksList();
@@ -68,9 +85,9 @@ export class Dashboard2Component implements AfterViewInit {
       this.ngxService.stop();
       console.warn('une erreur', err)
       this.toastr.error(err.error, 'Erreur');
-    }); 
+    });
   }
-/* 
+/*
   async getOnlineKiosk(){
     this.ngxService.start();
     this.toastr.info('Traitement en cours', 'Info');
@@ -129,7 +146,7 @@ export class Dashboard2Component implements AfterViewInit {
       if(transaction.status == 2) {
         this.transactionsHold++
       }
-      
+
      });
      this.transactionsTotal =this.allTransactions.totalItemsCount;
 

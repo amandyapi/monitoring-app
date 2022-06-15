@@ -39,6 +39,19 @@ export class ProfileComponent {
   ){
 
   }
+  ngOnInit(){
+    setTimeout(function () {
+      $(function () {
+        $('#kiosks').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'csv', 'excel', 'pdf'
+            ]
+        });
+      });
+    }, 3000);
+  }
+
   ngAfterViewInit() {
     this.getKiosksList();
    }
