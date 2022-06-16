@@ -14,3 +14,10 @@
 img{
 	width: 5em!important;
 }
+
+.exportExcel
+{
+  border: 2px solid blue !important;
+  /*background-image: linear-gradient(rgba(230, 230, 230, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%);*/
+  background-image: linear-gradient(rgba(14, 13, 13, 0.1) 0%, rgba(255, 54, 54, 0.1) 100%) !important;
+}

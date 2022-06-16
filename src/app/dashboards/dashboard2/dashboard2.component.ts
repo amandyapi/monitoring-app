@@ -42,11 +42,12 @@ export class Dashboard2Component implements AfterViewInit {
         $('#transactions').DataTable({
             dom: 'Bfrtip',
             buttons: [
-                'csv', 'excel', 'pdf'
+              'excelHtml5',
+              'pdfHtml5'
             ],
             language: {
-              url: 'dataTables.french.json'
-          }
+              url: "http://cdn.datatables.net/plug-ins/1.12.1/i18n/fr-FR.json"
+            }
         });
       });
     }, 3000);

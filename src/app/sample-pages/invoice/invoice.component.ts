@@ -23,8 +23,12 @@ export class InvoiceComponent {
         $('#services').DataTable({
             dom: 'Bfrtip',
             buttons: [
-                'csv', 'excel', 'pdf'
-            ]
+              'excelHtml5',
+              'pdfHtml5'
+            ],
+            language: {
+              url: 'http://cdn.datatables.net/plug-ins/1.12.1/i18n/fr-FR.json'
+            }
         });
       });
     }, 3000);
