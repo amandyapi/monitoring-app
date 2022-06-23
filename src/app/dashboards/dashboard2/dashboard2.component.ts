@@ -41,10 +41,6 @@ export class Dashboard2Component implements AfterViewInit {
       $(function () {
         $('#transactions').DataTable({
             dom: 'Bfrtip',
-            buttons: [
-              'excelHtml5',
-              'pdfHtml5'
-            ],
             language: {
               url: "http://cdn.datatables.net/plug-ins/1.12.1/i18n/fr-FR.json"
             }

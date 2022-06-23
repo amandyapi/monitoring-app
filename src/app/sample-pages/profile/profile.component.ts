@@ -42,12 +42,8 @@ export class ProfileComponent {
   ngOnInit(){
     setTimeout(function () {
       $(function () {
-        $('#kiosks').DataTable({
+        $('#transactions').DataTable({
             dom: 'Bfrtip',
-            buttons: [
-              'excelHtml5',
-              'pdfHtml5'
-            ],
             language: {
               url: 'http://cdn.datatables.net/plug-ins/1.12.1/i18n/fr-FR.json'
             }

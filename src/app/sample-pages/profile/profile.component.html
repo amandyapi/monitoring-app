@@ -49,7 +49,7 @@
             <div class="card-body">
                 <h4 class="card-title"><span class="lstick"></span>Liste des guichets</h4>
                 <div class="table-responsive">
-                    <table id="kiosks" class="table vm no-th-brd pro-of-month mb-0 no-wrap">
+                    <table id="transactions" class="table vm no-th-brd pro-of-month mb-0 no-wrap">
                         <thead>
                             <tr>
                                 <th>Id</th>
@@ -83,7 +83,7 @@
                                     <button
                                         class="btn btn-sm btn-warning"
                                         (click)="getKiosksDetails(kiosk.extId)"
-                                        (click)="open(content)">MODIFIER
+                                        (click)="open(content)">BILLETAGE
                                     </button>
                                 </td>
                             </tr>
@@ -111,33 +111,31 @@
       <div class="mb-3">
         <label for="dateOfBirth">Note 10000</label>
         <div class="input-group">
-          <input id="note_10000" name="note_10000" class="form-control" [(ngModel)]="billing.Note_10000"/>
+          <input id="note_10000" name="note_10000" [disabled]="true" class="form-control" value="{{billing.Note_10000}}"/>
         </div>
       </div>
       <div class="mb-3">
         <label for="dateOfBirth">Note 5000</label>
         <div class="input-group">
-          <input id="note_10000" name="note_10000" class="form-control" [(ngModel)]="billing.Note_5000"/>
+          <input id="note_5000" name="note_5000" [disabled]="true"class="form-control" value="{{billing.Note_5000}}"/>
         </div>
       </div>
       <div class="mb-3">
         <label for="dateOfBirth">Note 2000</label>
         <div class="input-group">
-          <input id="note_10000" name="note_10000" class="form-control" [(ngModel)]="billing.Note_2000"/>
+          <input id="note_2000" name="note_2000" [disabled]="true"class="form-control" value="{{billing.Note_2000}}"/>
         </div>
       </div>
       <div class="mb-3">
         <label for="dateOfBirth">Note 1000</label>
         <div class="input-group">
-          <input id="note_10000" name="note_10000" class="form-control" [(ngModel)]="billing.Note_1000"/>
+          <input id="note_10000" name="note_10000" [disabled]="true"class="form-control" value="{{billing.Note_1000}}"/>
         </div>
       </div>
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-warning"
-            (click)="updateKioskBilling()">Modifier
-    </button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Cross click')" >Fermer</button>
   </div>
 </ng-template>
 
