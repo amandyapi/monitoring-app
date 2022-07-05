@@ -80,10 +80,20 @@ export class PricingComponent {
   async GetAllTransactions(){
     this.ngxService.start();
     this.toastr.info('Traitement en cours', 'Info');
-    (await this.transaction.getAllTransactions(100))
+    (await this.transaction.getAllTransactions(1000000000))
     .toPromise()
     .then((res) => {
-     this.allTransactions= res;
+     let transactionsResult = res;
+    transactionsResult.data.sort((a, b) => (a.effectiveDate > b.effectiveDate) ? -1 : 1);
+    this.allTransactions = transactionsResult;
+    /*let i= 1;
+    transactionsResult.data.forEach(e => {
+        console.log(" Date "+ i, e.effectiveDate, " ");
+        i++
+    });*/
+    console.clear();
+    console.log('this.allTransactions ', this.allTransactions.data);
+     this.allTransactions= transactionsResult;
      this.allTransactions.data.forEach(transaction => {
        if(transaction.status == 0) {
          this.transactionsSuccess++

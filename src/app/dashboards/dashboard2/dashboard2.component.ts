@@ -14,6 +14,7 @@ import { TransactionService } from 'src/app/services/transaction.service';
 export class Dashboard2Component implements AfterViewInit {
   allTransactions: TransactionData;
   latestTransactions: TransactionModel[];
+  transactionsList: TransactionModel[];
   subtitle: string;
   kioskTotal: number= 0;
   onlineKiosk: number = 0;
@@ -132,8 +133,9 @@ export class Dashboard2Component implements AfterViewInit {
     (await this.transaction.getAllTransactions(100))
     .toPromise()
     .then((res) => {
-     this.allTransactions= res;
-     this.allTransactions.data.forEach(transaction => {
+      console.clear();
+      this.allTransactions = res;
+      this.allTransactions.data.forEach(transaction => {
        if(transaction.status == 0) {
          this.transactionsSuccess++
        }
@@ -146,8 +148,6 @@ export class Dashboard2Component implements AfterViewInit {
 
      });
      this.transactionsTotal =this.allTransactions.totalItemsCount;
-
-
      this.toastr.success('Kiosk', 'Success');
      this.ngxService.stop();
     })
@@ -165,7 +165,7 @@ export class Dashboard2Component implements AfterViewInit {
     (await this.transaction.getAllTransactions(10))
     .toPromise()
     .then((res) => {
-     this.latestTransactions= res.data;
+      this.latestTransactions = res.data;
     })
     .catch((err) => {
       this.ngxService.stop();

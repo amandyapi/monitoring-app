@@ -67,7 +67,7 @@
                                 <td>{{transaction.clientCode}}</td>
                                 <td>{{transaction.amount}}</td>
                                 <td>{{transaction.service.name}}</td>
-                                <td>{{transaction.created}}</td>
+                                <td>{{transaction.effectiveDate}}</td>
                                 <td>{{transaction.kiosk.name}}</td>
                                 <td *ngIf="transaction.status==0"><span class="label label-success label-rounded">Succès</span></td>
                                 <td *ngIf="transaction.status==1"><span class="label label-danger label-rounded">Echec</span></td>
